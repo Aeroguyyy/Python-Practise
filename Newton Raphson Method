@@ -1,0 +1,35 @@
+import math
+import matplotlib.pyplot as plt 
+import numpy as np
+
+
+def f(x):
+	return pow(x,3)+4*pow(x,2) + 2*x - 5
+
+def fprime(x):
+	return 3*pow(x,2) + 8*x -2
+
+
+"""
+Performing newton iteration
+
+"""
+
+x_guess = 80
+alpha = 0.2 #Under relaxtion factor
+
+x_guess = x_guess - alpha*(f(x_guess)/fprime(x_guess))
+print(x_guess)
+
+#Another method
+x_guess = 80
+alpha = 0.5
+tol = 1e-5
+iter =1
+
+while (abs(f(x_guess)) > tol ):
+	x_guess = x_guess - alpha*(f(x_guess)/fprime(x_guess))
+	iter = iter + 1
+
+print(iter)
+print(x_guess)
